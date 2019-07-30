@@ -1,6 +1,6 @@
 import re
 from os.path import join
-from distutils.core import setup, Extension
+from setuptools import setup, Extension
 
 
 kwds = {}
@@ -12,7 +12,7 @@ except IOError:
 # Read version from bitarray/__init__.py
 pat = re.compile(r'__version__\s*=\s*(\S+)', re.M)
 data = open(join('bitarray', '__init__.py')).read()
-kwds['version'] = eval(pat.search(data).group(1))
+kwds['version'] = '1.0.1+supercollider'
 
 
 setup(

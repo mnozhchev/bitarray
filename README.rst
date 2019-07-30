@@ -2,6 +2,15 @@
 bitarray: efficient arrays of booleans
 ======================================
 
+CHANGES:
+------------
+- setuptools instead of distutils for bdist_wheel support
+- wheels.sh builds binary wheels with manylinux2010 - PEP571
+
+Original README
+------------
+
+
 This module provides an object type which efficiently represents an array
 of booleans.  Bitarrays are sequence types and behave very much like usual
 lists.  Eight bits are represented by one byte in a contiguous block of
