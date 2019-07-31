@@ -5,7 +5,11 @@ bitarray: efficient arrays of booleans
 CHANGES:
 ------------
 - setuptools instead of distutils for bdist_wheel support
-- wheels.sh builds binary wheels with manylinux2010 - PEP571
+- wheel.sh builds Linux binary wheels. It is made to run within a manylinux2010 (PEP571) container, based on the example at
+https://github.com/pypa/python-manylinux-demo
+- run-wheel-docker.sh - starts docker and runs wheel.sh in a manylinux2010 docker container. Tested on Linux docker.
+- wheels-windows.ps1 builds wheels on Windows using all installed Python versions on the local machine. It requires
+Windows C++ compilers for various versions of Python from https://devblogs.microsoft.com/python/unable-to-find-vcvarsall-bat/ .
 
 Original README
 ------------
@@ -72,7 +76,7 @@ Once you have installed the package, you may want to test it::
    .................................................
    ----------------------------------------------------------------------
    Ran 146 tests in 2.164s
-   
+
    OK
 
 You can always import the function test,
@@ -309,26 +313,26 @@ Reference
    the optional initial, and endianness.
    If no object is provided, the bitarray is initialized to have length zero.
    The initial object may be of the following types:
-   
+
    int, long
        Create bitarray of length given by the integer.  The initial values
        in the array are random, because only the memory allocated.
-   
+
    string
        Create bitarray from a string of '0's and '1's.
-   
+
    list, tuple, iterable
        Create bitarray from a sequence, each element in the sequence is
        converted to a bit using truth value value.
-   
+
    bitarray
        Create bitarray from another bitarray.  This is done by copying the
        memory holding the bitarray data, and is hence very fast.
-   
+
    The optional keyword arguments 'endian' specifies the bit endianness of the
    created bitarray object.
    Allowed values are 'big' and 'little' (default is 'big').
-   
+
    Note that setting the bit endianness only has an effect when accessing the
    machine representation of the bitarray, i.e. when using the methods: tofile,
    fromfile, tobytes, frombytes.
